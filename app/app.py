@@ -1,20 +1,30 @@
 import streamlit as st
-import trends
-st.title('Поиск трендов, инсайтов и сборка дайджеста в источнике новостей')
+from entities import Digest, trends
+
+st.title("Поиск трендов, инсайтов и сборка дайджеста в источнике новостей")
 
 with st.container():
-    st.header('Тренды')
-    period1, period2, period3, period4 = st.tabs(['Сегодня', 'Неделя', 'Месяц', 'Год'])
+    st.header('Дайджест новостей')
+    digest_period_1, digest_period_2, digest_period_3, digest_period_4 = st.tabs(["День", "Неделя", "Месяц", "Год"])
 
-    with period1:
-        st.subheader('Что интересного?')
+    with digest_period_1:
+
+        daily_digest = Digest()
+        daily_digest.get_data()
+
+        with st.expander
+
+with st.container():
+    st.header("Тренды за последнее время")
+    trends_period_1, trends_period_2, trends_period_3, trends_period_4 = st.tabs(["День", "Неделя", "Месяц", "Год"])
+
+    with trends_period_1:
 
         trends_data = trends.get_trends()
 
 
 
-with st.container():
-   st.write("This is inside the container")
+
 
 '''
 streamlit run app/app.py
