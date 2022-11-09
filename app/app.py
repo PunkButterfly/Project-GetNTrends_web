@@ -12,7 +12,10 @@ with st.container():
         daily_digest = Digest()
         daily_digest.get_data()
 
-        with st.expander
+        for news_data in daily_digest.data:
+            with st.expander(news_data.title):
+                st.write(news_data.content)
+                st.caption(news_data.date)
 
 with st.container():
     st.header("Тренды за последнее время")
