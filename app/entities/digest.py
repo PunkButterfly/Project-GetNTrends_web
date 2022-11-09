@@ -1,3 +1,6 @@
+from .period import Period
+
+
 class Digest:
     class News:
         def __init__(self, title: str = None, content: str = None, date: str = None, url: str = None):
@@ -8,8 +11,9 @@ class Digest:
 
             return
 
-    def __init__(self):
+    def __init__(self, period: Period):
         self.data = []
+        self.period = period
 
         return
 
@@ -24,6 +28,7 @@ class Digest:
                                  url=f"badass:{i * 111}")
 
                 self.data.append(news)
+            ###
         except Exception as err:  # Поймать нужную ошибку при отсутствии связи с бэком
             print(err)
 
