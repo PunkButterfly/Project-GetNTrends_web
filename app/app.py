@@ -6,11 +6,11 @@ st.title("Поиск трендов, инсайтов и сборка дайдж
 with st.container():
     st.header('Дайджест новостей')
 
+    digest_periods_days_numbers = [item.days_number for item in Period]
     digest_periods_descriptions = [item.description for item in Period]
-    digest_periods_days_number = [item.days_number for item in Period]
     digest_tabs = list(st.tabs(digest_periods_descriptions))
 
-    for digest_tab, digest_period in zip(digest_tabs, digest_periods_days_number):
+    for digest_tab, digest_period in zip(digest_tabs, digest_periods_days_numbers):
         with digest_tab:
 
             digest = Digest(digest_period)
