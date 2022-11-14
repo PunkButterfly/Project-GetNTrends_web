@@ -44,7 +44,7 @@ with st.container():
     insights_periods_descriptions = [item.description for item in Period]
     insights_tabs = list(st.tabs(insights_periods_descriptions))
 
-    for insights_tab,  insights_period in zip(insights_tabs,  insights_periods_days_numbers):
+    for insights_tab, insights_period in zip(insights_tabs, insights_periods_days_numbers):
         with insights_tab:
 
             insights = Insights(insights_period)
@@ -55,13 +55,6 @@ with st.container():
                     for source in insight_data.sources:
                         st.write(source.title)
                         st.caption(source.date)
-
-
-
-
-
-
-
 
 '''
 streamlit run app/app.py

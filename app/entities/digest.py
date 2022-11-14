@@ -17,7 +17,7 @@ class Digest:
 
         return
 
-    def get_data(self) -> None:
+    def get_data(self):
 
         try:
             ### Связь с бэком

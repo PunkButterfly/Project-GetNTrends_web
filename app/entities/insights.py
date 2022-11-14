@@ -22,7 +22,7 @@ class Insights:
 
         return
 
-    def get_data(self) -> None:
+    def get_data(self):
 
         try:
             ### Связь с бэком
@@ -33,9 +33,9 @@ class Insights:
                 insight_header = f"Инсайт {i + 1}"
                 for j in range(0, news_in_insight):
                     source = self.Insight.Source(title=f"Источник инсайта {j + 1}",
-                                               content=f"Содержание источника {j + 1}",
-                                               date=f"0{j + 3}.11.22",
-                                               url=f"badass:{j * 111}")
+                                                 content=f"Содержание источника {j + 1}",
+                                                 date=f"0{j + 3}.11.22",
+                                                 url=f"badass:{j * 111}")
 
                     insight_sources.append(source)
                 insight = self.Insight(insight_header, insight_sources)
