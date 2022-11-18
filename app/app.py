@@ -1,6 +1,7 @@
 import streamlit as st
 from entities import Period, Digest, Trends, Insights
 
+
 st.title("Поиск трендов, инсайтов и сборка дайджеста в источнике новостей")
 
 with st.container():
@@ -14,7 +15,6 @@ with st.container():
         with digest_tab:
 
             digest = Digest(digest_period)
-            digest.get_data()
 
             for news_data in digest.data:
                 with st.expander(news_data.title):

@@ -1,4 +1,5 @@
 from .period import Period
+from .get_response import get_response
 
 
 class Digest:
@@ -14,19 +15,22 @@ class Digest:
     def __init__(self, period: Period):
         self.data = []
         self.period = period
+        self.parse_data()
 
         return
 
-    def get_data(self):
+    def parse_data(self):
 
         try:
-            ### Связь с бэком
-            for i in range(0, 5):
-                news = self.News(title=f"Название статьи {i + 1}",
-                                 content=f"Содержание статьи {i + 1}",
-                                 date=f"0{i + 3}.11.22",
-                                 url=f"badass:{i * 111}")
+            # Связь с бэком
 
+            response = get_response()  # TODO: дописать аргументы времени
+
+            for item in response["digest"]:
+                news = self.News(title=item["content"],
+                                 content="Содержание статьи",
+                                 date=response["dates"]["start_date"],
+                                 url=f"https://badass")
                 self.data.append(news)
             ###
         except Exception as err:  # Поймать нужную ошибку при отсутствии связи с бэком
