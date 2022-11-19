@@ -13,17 +13,3 @@ class Trends:
         self.period = period
 
         return
-
-    def get_data(self):
-
-        try:
-            ### Связь с бэком
-            for i in range(0, 5):
-                trend = self.Trend(title=f"Тренд {i + 1}")
-
-                self.data.append(trend)
-            ###
-        except Exception as err:  # Поймать нужную ошибку при отсутствии связи с бэком
-            print(err)
-
-        return
