@@ -1,6 +1,3 @@
-from .period import Period
-
-
 class Trends:
     class Trend:
         def __init__(self, title: str = None):
@@ -8,22 +5,20 @@ class Trends:
 
             return
 
-    def __init__(self, period: Period):
+    def __init__(self, response):
         self.data = []
-        self.period = period
+        self.parse_data(response)
 
         return
 
-    def get_data(self):
-
+    def parse_data(self, response):
+        # TODO: Дописать парсер
         try:
-            ### Связь с бэком
             for i in range(0, 5):
                 trend = self.Trend(title=f"Тренд {i + 1}")
 
                 self.data.append(trend)
-            ###
-        except Exception as err:  # Поймать нужную ошибку при отсутствии связи с бэком
+        except Exception as err:  # Поймать нужную ошибку
             print(err)
 
         return
