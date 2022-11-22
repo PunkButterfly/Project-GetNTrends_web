@@ -19,8 +19,6 @@ try:
 except ConnectionError as err:
     error_page()
 
-
-
 '''
 streamlit run app/app.py
 '''
