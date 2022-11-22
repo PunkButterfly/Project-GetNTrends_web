@@ -16,7 +16,7 @@ try:
 
     main_page(received_responses)
 
-except ConnectionError as err:
+except Exception as err:
     error_page()
 
 '''

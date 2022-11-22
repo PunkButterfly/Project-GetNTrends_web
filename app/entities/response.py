@@ -29,6 +29,7 @@ class ResponseData:
         return self.get_response(mode, params_dict)
 
     def get_response(self, mode: str, params: dict):
+
         response = requests.post(mode, data=params)
         response_content = response.content.decode("utf-8")
 
