@@ -1,10 +1,10 @@
 class Digest:
     class News:
-        def __init__(self, title: str = None, content: str = None, date: str = None, url: str = None):
+        def __init__(self, title: str = None, content: str = None, date: str = None, channel: str = None):
             self.title = title
             self.content = content
             self.date = date
-            self.url = url
+            self.channel = channel
 
             return
 
@@ -18,10 +18,10 @@ class Digest:
 
         try:
             for item in response["digest"]:
-                news = self.News(title=item["content"],
-                                 content="Содержание статьи",
-                                 date=response["dates"]["start_date"],
-                                 url=f"https://badass")
+                news = self.News(title=item["title"],
+                                 content=item["content"],
+                                 # date=response["dates"]["start_date"],
+                                 channel=item["channel"])
                 self.data.append(news)
         except Exception as err:  # Поймать нужную ошибку
             print(err)

@@ -1,8 +1,8 @@
 class Trends:
     class Trend:
-        def __init__(self, title: str = None):
-            self.title = title
-
+        def __init__(self, keywords: str = None, contents: list = None):
+            self.keywords = keywords
+            self.contents = contents
             return
 
     def __init__(self, response):
@@ -12,11 +12,10 @@ class Trends:
         return
 
     def parse_data(self, response):
-        # TODO: Дописать парсер
         try:
-            for i in range(0, 5):
-                trend = self.Trend(title=f"Тренд {i + 1}")
-
+            for item in response["trends"]:
+                trend = self.Trend(keywords=f"{item['keywords'][0].capitalize()}, {item['keywords'][1].capitalize()}",
+                                   contents=item["content"][0:3])
                 self.data.append(trend)
         except Exception as err:  # Поймать нужную ошибку
             print(err)

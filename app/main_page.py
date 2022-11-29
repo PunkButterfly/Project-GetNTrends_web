@@ -21,7 +21,7 @@ def main_page(received_responses):
                 for news_data in digest.data:
                     with st.expander(news_data.title):
                         st.write(news_data.content)
-                        st.caption(news_data.date)
+                        st.caption(news_data.channel)
 
     with st.container():
         st.header("Текущие тренды")
@@ -34,7 +34,11 @@ def main_page(received_responses):
                 trends = response.trends
 
                 for trend_data in trends.data:
-                    st.write(trend_data.title)
+                    with st.expander(trend_data.keywords):
+                        news_by_trend = trend_data.contents
+                        for news in news_by_trend:
+                            st.write("")
+                            st.write(news)
 
     with st.container():
         st.header("Инсайты")
