@@ -18,10 +18,10 @@ try:
     weekly_response.get_response_by_period(period='week')
     monthly_response = ResponseData(Period.MONTH)
     monthly_response.get_response_by_period(period='month')
-    # yearly_response = ResponseData(Period.YEAR)
-    # yearly_response.get_response_by_period(period='year')
+    yearly_response = ResponseData(Period.YEAR)
+    yearly_response.get_response_by_period(period='year')
 
-    received_responses = [daily_response, weekly_response, monthly_response] # yearly_response
+    received_responses = [daily_response, weekly_response, monthly_response, yearly_response] # yearly_response
 
     main_page(received_responses)
 
