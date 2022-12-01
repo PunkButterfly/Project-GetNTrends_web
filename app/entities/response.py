@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime as dt
 
 from .period import Period
 from .digest import Digest
@@ -20,13 +21,24 @@ class ResponseData:
         mode = "http://51.250.97.255:80/by_dates"
         params_dict = {"start_date": start_date, "end_date": end_date}
 
-        return self.get_response(mode, params_dict)
+        received_response = self.get_response(mode, params_dict)
+
+        return received_response
 
     def get_response_by_period(self, period: str):
         mode = "http://51.250.97.255:80/by_period"
         params_dict = {"period": period}
 
-        return self.get_response(mode, params_dict)
+        received_response = self.get_response(mode, params_dict)
+
+        if received_response is None:
+            end_date = dt.datetime.now() - dt.timedelta(days=1)
+            days = count_days_by_mode(period)
+            start_date = end_date - dt.timedelta(days=days)
+            received_response = self.get_response_by_dates(start_date.strftime("%Y-%m-%d"),
+                                                           end_date.strftime("%Y-%m-%d"))
+
+        return received_response
 
     def get_response(self, mode: str, params: dict):
 
@@ -56,3 +68,14 @@ def is_response_correct(code):
         raise ConnectionError("Bad connection")
     else:
         return True
+
+
+def count_days_by_mode(mode: str) -> int:
+    if mode == "day":
+        return 1
+    if mode == "week":
+        return 7
+    if mode == "month":
+        return 30
+    if mode == "year":
+        return 365
