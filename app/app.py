@@ -17,7 +17,3 @@ try:
     main_page(received_responses)
 except Exception:
     error_page()
-
-'''
-streamlit run app/app.py
-'''
