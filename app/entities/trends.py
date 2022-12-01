@@ -14,8 +14,8 @@ class Trends:
     def parse_data(self, response):
         try:
             for item in response["trends"]:
-                trend = self.Trend(keywords=f"{item['keywords'][0].capitalize()}, {item['keywords'][1].capitalize()}",
-                                   contents=item["content"][0:3])
+                trend = self.Trend(keywords=f"{item['keywords'][0].capitalize()}",
+                                   contents=list(set(item["content"])))
                 self.data.append(trend)
         except Exception as err:  # Поймать нужную ошибку
             print(err)
