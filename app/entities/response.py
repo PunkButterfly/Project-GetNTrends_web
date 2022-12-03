@@ -31,13 +31,6 @@ class ResponseData:
 
         received_response = self.get_response(mode, params_dict)
 
-        if received_response is None:
-            end_date = dt.datetime.now() - dt.timedelta(days=1)
-            days = count_days_by_mode(period)
-            start_date = end_date - dt.timedelta(days=days)
-            received_response = self.get_response_by_dates(start_date.strftime("%Y-%m-%d"),
-                                                           end_date.strftime("%Y-%m-%d"))
-
         return received_response
 
     def get_response(self, mode: str, params: dict):
