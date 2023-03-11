@@ -18,7 +18,7 @@ class ResponseData:
         self.insights = None
 
     def get_response_by_dates(self, start_date: str, end_date: str):
-        mode = "http://51.250.97.255:80/by_dates"
+        mode = "http://158.160.21.26:80/by_dates"
         params_dict = {"start_date": start_date, "end_date": end_date}
 
         received_response = self.get_response(mode, params_dict)
@@ -26,7 +26,7 @@ class ResponseData:
         return received_response
 
     def get_response_by_period(self, period: str):
-        mode = "http://51.250.97.255:80/by_period"
+        mode = "http://158.160.21.26:80/by_period"
         params_dict = {"period": period}
 
         received_response = self.get_response(mode, params_dict)
