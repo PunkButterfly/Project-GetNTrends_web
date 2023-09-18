@@ -13,19 +13,20 @@ def main_page(received_responses):
         st.header('Дайджест новостей')
 
         #tabs = list(st.tabs(periods_descriptions))
-        tabs = list(st.tabs('default'))
+        #tabs = list(st.tabs('default'))
 
-        for digest_tab, response in zip(tabs, received_responses):
-            with digest_tab:
+        for response in received_responses:
 
-                digest = response.digest
-                try:
-                    for news_data in digest.data:
-                        with st.expander(news_data.title):
-                            st.write(news_data.content)
-                            st.caption(news_data.channel)
-                except Exception:
-                    error_page("Digest being prepared")
+            digest = response.digest
+
+            print(digest.data[0].title, digest.data[0].content)
+            try:
+                for news_data in digest.data:
+                    # with st.expander(news_data.title):
+                    st.write(news_data.content)
+                            # st.caption(news_data.channel)
+            except Exception:
+                error_page("Digest being prepared")
     '''
     with st.container():
         st.header("Текущие тренды")
@@ -50,15 +51,14 @@ def main_page(received_responses):
         st.header("Инсайты")
 
         #tabs = list(st.tabs(periods_descriptions))
-        tabs = list(st.tabs('default'))
+        #tabs = list(st.tabs('default'))
 
-        for insights_tab, response in zip(tabs, received_responses):
-            with insights_tab:
+        for response in received_responses:
 
-                insights = response.insights
-                try:
-                    for insight_data in insights.data:
-                        st.write(insight_data.content)
-                        st.write("\n")
-                except Exception:
-                    error_page("Insights being prepared")
+            insights = response.insights
+            try:
+                for insight_data in insights.data:
+                    st.write(insight_data.content)
+                    st.write("\n")
+            except Exception:
+                error_page("Insights being prepared")
