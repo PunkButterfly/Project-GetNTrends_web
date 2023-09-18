@@ -13,7 +13,7 @@ class Insights:
 
         try:
             for item in response["insights"]:
-                insight = self.Insight(content=item["content"])
+                insight = self.Insight(content=item["text"])
                 self.data.append(insight)
         except Exception as err:  # Поймать нужную ошибку
             print(err)

@@ -4,7 +4,7 @@ from error_page import error_page
 
 
 def main_page(received_responses):
-    periods_descriptions = [item.description for item in Period]
+    #periods_descriptions = [item.description for item in Period]
 
     # Содержание страницы
     st.title("Поиск трендов, инсайтов и сборка дайджеста в источниках новостей")
@@ -12,7 +12,8 @@ def main_page(received_responses):
     with st.container():
         st.header('Дайджест новостей')
 
-        tabs = list(st.tabs(periods_descriptions))
+        #tabs = list(st.tabs(periods_descriptions))
+        tabs = list(st.tabs('default'))
 
         for digest_tab, response in zip(tabs, received_responses):
             with digest_tab:
@@ -25,7 +26,7 @@ def main_page(received_responses):
                             st.caption(news_data.channel)
                 except Exception:
                     error_page("Digest being prepared")
-
+    '''
     with st.container():
         st.header("Текущие тренды")
 
@@ -44,11 +45,12 @@ def main_page(received_responses):
                                 st.write(news)
                 except Exception:
                     error_page("Trends being prepared")
-
+    '''
     with st.container():
         st.header("Инсайты")
 
-        tabs = list(st.tabs(periods_descriptions))
+        #tabs = list(st.tabs(periods_descriptions))
+        tabs = list(st.tabs('default'))
 
         for insights_tab, response in zip(tabs, received_responses):
             with insights_tab:

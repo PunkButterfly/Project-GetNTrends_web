@@ -18,10 +18,11 @@ class Digest:
 
         try:
             for item in response["digest"]:
-                news = self.News(title=item["title"],
-                                 content=item["content"],
+                news = self.News(#title=item.get("title", None),
+                                 content=item["text"]
                                  # date=response["dates"]["start_date"],
-                                 channel=item["channel"])
+                                 #channel=item["channel"]
+                                 )
                 self.data.append(news)
         except Exception as err:  # Поймать нужную ошибку
             print(err)

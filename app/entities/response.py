@@ -33,6 +33,12 @@ class ResponseData:
 
         return received_response
 
+    def get_response_default(self):
+        mode = "http../default"
+        params_dict = {}
+        received_response = self.get_response(mode, params_dict)
+        return received_response
+
     def get_response(self, mode: str, params: dict):
 
         response = requests.post(mode, data=params)
@@ -50,7 +56,7 @@ class ResponseData:
 
     def parse_response(self, response):
         self.digest = Digest(response=response)
-        self.trends = Trends(response=response)
+        #self.trends = Trends(response=response)
         self.insights = Insights(response=response)
 
         return
