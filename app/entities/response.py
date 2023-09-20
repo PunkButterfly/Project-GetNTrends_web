@@ -34,7 +34,7 @@ class ResponseData:
         return received_response
 
     def get_response_default(self):
-        mode = "http://127.0.0.1:5000/default"
+        mode = "http://127.0.0.1:8080/default"
         params_dict = {}
         received_response = self.get_response(mode, params_dict)
         return received_response
@@ -60,8 +60,8 @@ class ResponseData:
         self.digest = Digest(response=response)
         #self.trends = Trends(response=response)
         self.insights = Insights(response=response)
-
         return
+
 
 
 def is_response_correct(code):
