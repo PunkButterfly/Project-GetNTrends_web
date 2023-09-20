@@ -66,13 +66,18 @@ def main_page(received_responses):
 
         #tabs = list(st.tabs(periods_descriptions))
         #tabs = list(st.tabs('default'))
-
+        news_limiter = 3
         for response in received_responses:
 
             insights = response.insights
+            print('try insight')
             try:
                 for insight_data in insights.data:
-                    st.write(insight_data.content)
-                    st.write("\n")
+                    with st.expander(insight_data.content):
+                        news_by_insight = insight_data.raw_text[:news_limiter]
+                        for news in news_by_insight:
+                            st.write("")
+                            st.write(news)
+
             except Exception:
                 error_page("Insights being prepared")

@@ -1,7 +1,8 @@
 class Insights:
     class Insight:
-        def __init__(self, content: str):
+        def __init__(self, content: str, raw_text: list[str]):
             self.content = content
+            self.raw_text = raw_text
 
     def __init__(self, response):
         self.data = []
@@ -13,7 +14,8 @@ class Insights:
 
         try:
             for item in response["insights"]:
-                insight = self.Insight(content=item["text"])
+                print(item)
+                insight = self.Insight(content=item.get("text", 'Warming'), raw_text=item.get('raw_texts', 'Warming'))
                 self.data.append(insight)
         except Exception as err:  # Поймать нужную ошибку
             print(err)
