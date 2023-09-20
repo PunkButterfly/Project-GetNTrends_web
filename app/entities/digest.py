@@ -31,9 +31,9 @@ class Digest:
         try:
             for category, category_info in response["digest"].items():
                 news_per_cat = self.News_by_category(category=category,
-                                                     content=category_info.get('text'),
-                                                     channels=category_info.get('channel_id'))
-                if len(category_info['text']):
+                                                     content=category_info.get('text', 'Warming: empty text'),
+                                                     channels=category_info.get('channel_id', 'Warming: empty channel_id'))
+                if category_info.get('text', None):
                     self.not_empty_cat_info.append(category)
                 self.all_categories.append(category)
                 self.data.append(news_per_cat)
