@@ -34,7 +34,7 @@ class ResponseData:
         return received_response
 
     def get_response_default(self):
-        mode = "http://127.0.0.1:8080/default"
+        mode = "http://127.0.0.1:5000/default"
         params_dict = {}
         received_response = self.get_response(mode, params_dict)
         return received_response
@@ -63,10 +63,9 @@ class ResponseData:
         return
 
 
-
 def is_response_correct(code):
     if code != 200:
-        raise ConnectionError("Bad connection")
+        raise ConnectionError("Error connection")
     else:
         return True
 

@@ -14,8 +14,7 @@ class Insights:
 
         try:
             for item in response["insights"]:
-                print(item)
-                insight = self.Insight(content=item.get("text", 'Warming'), raw_text=item.get('raw_texts', 'Warming'))
+                insight = self.Insight(content=item.get("text", None), raw_text=item.get('raw_texts', None))
                 self.data.append(insight)
         except Exception as err:  # Поймать нужную ошибку
             print(err)
