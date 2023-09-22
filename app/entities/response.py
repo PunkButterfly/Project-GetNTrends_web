@@ -8,6 +8,7 @@ from .trends import Trends
 from .insights import Insights
 
 
+
 class ResponseData:
     def __init__(self, period: Period):
         self.response = None
