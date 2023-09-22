@@ -1,4 +1,5 @@
 import streamlit as st
+from entities import Period
 from error_page import error_page
 
 
