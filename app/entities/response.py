@@ -1,18 +1,14 @@
 import requests
 import json
-import datetime as dt
 
-from .period import Period
 from .digest import Digest
-from .trends import Trends
 from .insights import Insights
 
 
 class ResponseData:
-    def __init__(self, period: Period):
+    def __init__(self):
         self.response = None
 
-        self.period = period
         self.digest = None
         self.trends = None
         self.insights = None
