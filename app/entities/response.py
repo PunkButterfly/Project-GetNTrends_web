@@ -13,8 +13,24 @@ class ResponseData:
         self.trends = None
         self.insights = None
 
+    def get_response_by_dates(self, start_date: str, end_date: str):
+        mode = "http://158.160.21.26:80/by_dates"
+        params_dict = {"start_date": start_date, "end_date": end_date}
+
+        received_response = self.get_response(mode, params_dict)
+
+        return received_response
+
+    def get_response_by_period(self, period: str):
+        mode = "http://158.160.21.26:80/by_period"
+        params_dict = {"period": period}
+
+        received_response = self.get_response(mode, params_dict)
+
+        return received_response
+
     def get_response_default(self):
-        mode = "http://158.160.21.26:8505/default"
+        mode = "http://127.0.0.1:5000/default"
         params_dict = {}
         received_response = self.get_response(mode, params_dict)
         return received_response
@@ -49,3 +65,13 @@ def is_response_correct(code):
     else:
         return True
 
+
+def count_days_by_mode(mode: str) -> int:
+    if mode == "day":
+        return 1
+    if mode == "week":
+        return 7
+    if mode == "month":
+        return 30
+    if mode == "year":
+        return 365
