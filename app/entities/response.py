@@ -1,15 +1,16 @@
 import requests
 import json
 
+from .period import Period
 from .digest import Digest
 from .insights import Insights
 
 
-
 class ResponseData:
-    def __init__(self):
+    def __init__(self, period: Period):
         self.response = None
 
+        self.period = period
         self.digest = None
         self.trends = None
         self.insights = None
