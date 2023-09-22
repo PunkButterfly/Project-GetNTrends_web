@@ -34,7 +34,7 @@ class ResponseData:
         return received_response
 
     def get_response_default(self):
-        mode = "http://158.160.21.26:8504/default"
+        mode = "http://158.160.21.26:8505/default"
         params_dict = {}
         received_response = self.get_response(mode, params_dict)
         return received_response
