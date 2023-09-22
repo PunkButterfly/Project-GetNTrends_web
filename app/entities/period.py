@@ -1,7 +1,6 @@
 from enum import Enum
 
 
-
 class Period(Enum):
 
     def __init__(self, days_number, description):
